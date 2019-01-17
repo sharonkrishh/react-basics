@@ -26,16 +26,6 @@ class EmployeForm extends Component {
         let {name, email, phone, photo} = this.state;
         
         let newEmployee={name, email, phone, photo};
-        // this.setState(prevState => ({
-        //     showData: prevState.showData.concat(newEmployee)
-        // }),
-        // this.setState({
-        //     name:'',
-        //     email:'',
-        //     phone:'',
-        //     photo:''
-        // }));
-
         if (newEmployee.name === "" && newEmployee.email === "" && newEmployee.phone === "" && newEmployee.photo === "") {
             return false;
         } else{
