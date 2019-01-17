@@ -1,0 +1,111 @@
+*{
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+.employeeForm{
+  padding: 40px;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  max-width: 600px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  align-items: center;
+  margin: 0 auto;
+}
+.employeeForm form{
+  display: flex;
+  flex-flow: column;
+  width: 100%;
+}
+.employeeForm .form-row{
+  display: flex;
+  flex-flow: row nowrap;
+  margin: 6px 0;
+}
+.employeeForm .form-row > *{
+  flex: 1 1 50%;
+}
+.employeeForm .form-row label{
+ flex-basis: 20%;
+ text-align: left;
+ font-size: 12px;
+ font-weight: bold;
+}
+.employeeForm .form-row input{
+  height:30px;
+  border-radius: 4px;
+  border:1px solid #ddd;
+  padding: 10px;
+}
+.employeeForm .form-row input[type="file"]{
+  vertical-align: middle;
+  line-height: 20px;
+  padding: 0;
+  height: 22px;
+}
+.employeeForm button{
+  max-height: 46px;
+  text-align: center;
+  padding: 10px;
+  border-radius: 4px;
+  background-color: #ececec;
+  border:1px solid #ddd;
+  margin-top: 20px;
+  outline: none;
+  cursor: pointer;
+}
+.loeHeader{
+  padding: 40px 0;
+  display: block;
+  text-align: center;
+}
+.loeDisplayBtn{
+  padding: 15px 30px;
+  background-color: #efefef;
+  border-radius: 4px;
+  display: inline-block;
+  font-size: 12px;
+  font-weight: bold;
+  border: 1px solid #ddd;
+  text-decoration: none;
+  color: #666666;
+}
+.loeRecords{
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  max-width: 600px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  align-items: center;
+  margin: 0 auto;
+}
+/* .loeRecords {
+display: none;
+  
+} */
+.loeRecords table{
+  font-size: 12px;
+  margin: 0 auto;
+  width: 100%;
+}
+.loeRecords table th, .loeRecords table td{
+  padding: 5px;
+  text-align: left;
+}
