@@ -86,7 +86,7 @@ code {
   text-decoration: none;
   color: #666666;
 }
-.loeRecords.visible{
+.loeRecords{
   display: flex;
   flex-flow: row nowrap;
   justify-content: center;
@@ -96,10 +96,10 @@ code {
   align-items: center;
   margin: 0 auto;
 }
-.loeRecords {
+/* .loeRecords {
 display: none;
   
-}
+} */
 .loeRecords table{
   font-size: 12px;
   margin: 0 auto;

@@ -36,7 +36,7 @@ class EmployeeList extends Component {
         return (
             <div className="listOfEmployee">
                 <div className="loeHeader">
-                    <a className="loeDisplayBtn" href="true" onClick={this.onClick}>See all records of employee</a>
+                    <a className="loeDisplayBtn" href="true" onClick={this.onClick}>See all records</a>
                 </div>
 
                 <div className={recordList.join(' ')}>

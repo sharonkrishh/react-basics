@@ -19,6 +19,8 @@ class EmployeForm extends Component {
     handleChange = (e) =>{
         e.preventDefault();
         this.setState({[e.target.name] : e.target.value});
+
+
     }
 
     onSubmitHandle = (e) =>{
@@ -39,12 +41,7 @@ class EmployeForm extends Component {
                 photo:''
             }));
         }
-        
-
-
     }
-
-
 
     handleClick = (index) =>{
         let newShowData = this.state.showData;
@@ -55,8 +52,21 @@ class EmployeForm extends Component {
         }
     }
 
-    editRecords = (index) => {
+    editRecords = (index, e) => {
         console.log("I am edit action propagation from parent and index is", index);
+        let dataList = this.state.showData;
+        let arrayItem = dataList[index];
+        console.log(arrayItem);
+
+
+
+        this.setState({[this.state]: Object.assign(arrayItem)});
+        this.setState({
+            name:arrayItem.name,
+            email:arrayItem.email,
+            phone:arrayItem.phone,
+            photo:arrayItem.photo
+        });
 
     }
 
