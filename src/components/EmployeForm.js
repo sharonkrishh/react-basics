@@ -26,6 +26,7 @@ class EmployeForm extends Component {
         let {name, email, phone, photo} = this.state;
         
         let newEmployee={name, email, phone, photo};
+        console.log(newEmployee);
         // this.setState(prevState => ({
         //     showData: prevState.showData.concat(newEmployee)
         // }),
