@@ -109,3 +109,12 @@ display: none;
   padding: 5px;
   text-align: left;
 }
+.employeeForm .disable{
+  display: none !important;
+}
+.employeeForm .elementEditForm{
+  display: none;
+}
+.employeeForm .elementEditForm.active{
+  display: flex;
+}

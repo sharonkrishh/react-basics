@@ -7,29 +7,26 @@ class EmployeeList extends Component {
             isVisibleRecords : false
         }
         this.onClick = this.onClick.bind(this);
-        // this.deleteRow = this.deleteRow.bind(this);
     }
 
     onClick = (e) =>{
         e.preventDefault();
-        // console.log(this.props.records);
         this.setState({
             isVisibleRecords: !this.state.isVisibleRecords
         });
     }
-
-    deleteRow = (index) => {
-        this.props.onClick(index);
+ // For callback delete method
+    deleteRow = (e, index) => {
+        this.props.onDelete(index);
     }
-    
-    editRow = (index) => {
+// For callback edit method
+    editRow = (e, index) => {
         console.log("I am edit action propagation");
         this.props.onEdit(index);
     }
 
     render() {
             let recordList = ["loeRecords"];
-            console.log(recordList);
             if(this.state.isVisibleRecords){
                 recordList.push('visible');
             }
@@ -59,8 +56,8 @@ class EmployeeList extends Component {
                                         <td>{record.phone}</td>
                                         <td>{record.photo}</td>
                                         <td>
-                                            <button onClick={() => this.deleteRow(index)}>Delete</button>
-                                            <button onClick={() => this.editRow(index)}>Edit</button>
+                                            <button onClick={(e) => this.deleteRow(e,index)}>Delete</button>
+                                            <button onClick={(e) => this.editRow(e,index)}>Edit</button>
                                         </td>
                                     </tr>)
                                 }

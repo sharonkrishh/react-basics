@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import EmployeeList from './EmployeeList';
+import { styles } from 'ansi-colors';
 
 class EmployeForm extends Component {
     constructor(props){
@@ -10,55 +11,32 @@ class EmployeForm extends Component {
                 phone:'',
                 photo:'',
                 showData: [],
+                isEditElement: false,
+                indexForEdit:''
         }
         this.onSubmitHandle  = this.onSubmitHandle.bind(this);
         this.handleChange = this.handleChange.bind(this);
-        this.handleClick = this.handleClick.bind(this);
+        this.deleteRecord = this.deleteRecord.bind(this);
     }
-
+// On input change method
     handleChange = (e) =>{
         e.preventDefault();
         this.setState({[e.target.name] : e.target.value});
 
 
     }
-
-    onSubmitHandle = (e) =>{
-        e.preventDefault();
-        let {name, email, phone, photo} = this.state;
-        
-        let newEmployee={name, email, phone, photo};
-        if (newEmployee.name === "" && newEmployee.email === "" && newEmployee.phone === "" && newEmployee.photo === "") {
-            return false;
-        } else{
-            this.setState(prevState => ({
-                showData: prevState.showData.concat(newEmployee)
-            }),
-            this.setState({
-                name:'',
-                email:'',
-                phone:'',
-                photo:''
-            }));
-        }
-    }
-
-    handleClick = (index) =>{
-        let newShowData = this.state.showData;
-        console.log(newShowData);
-        if(index !== -1){
-            newShowData.splice(index, 1);
-            this.setState({showData: newShowData});
-        }
-    }
-
+// Edit handler method
     editRecords = (index, e) => {
         console.log("I am edit action propagation from parent and index is", index);
         let dataList = this.state.showData;
+        if(index !== ''){
+            this.setState({
+                isEditElement: !this.state.isEditElement,
+                indexForEdit: index
+            });
+        }
         let arrayItem = dataList[index];
-        console.log(arrayItem);
-
-
+        // console.log(arrayItem);
 
         this.setState({[this.state]: Object.assign(arrayItem)});
         this.setState({
@@ -68,6 +46,56 @@ class EmployeForm extends Component {
             photo:arrayItem.photo
         });
 
+    }
+// For create and update method
+    onSubmitHandle = (e) =>{
+        e.preventDefault();
+        let {name, email, phone, photo} = this.state;
+        let {indexForEdit} = this.state;
+        console.log(indexForEdit);
+        let newRecord={name, email, phone, photo};
+        console.log(newRecord);
+        let newShowData = this.state.showData;
+        console.log("newData",newShowData);
+        
+        // For creating update the record method
+        if(this.state.isEditElement){
+            newShowData.splice(indexForEdit, 1, newRecord);
+            this.setState({showData:newShowData},
+            this.setState({
+                name:'',
+                email:'',
+                phone:'',
+                photo:''
+            }),
+            this.setState({
+                isEditElement: false,
+            }));
+        }else{
+            // For creating new record method
+            if (newRecord.name === "" && newRecord.email === "" && newRecord.phone === "" && newRecord.photo === "") {
+                return false;
+            } else{
+                this.setState(prevState => ({
+                    showData: prevState.showData.concat(newRecord)
+                }),
+                this.setState({
+                    name:'',
+                    email:'',
+                    phone:'',
+                    photo:''
+                }));
+            }
+        }
+    }
+    // For delete method
+    deleteRecord = (index) =>{
+        let newShowData = this.state.showData;
+        console.log(newShowData);
+        if(index !== -1){
+            newShowData.splice(index, 1);
+            this.setState({showData: newShowData});
+        }
     }
 
     render() {
@@ -99,7 +127,7 @@ class EmployeForm extends Component {
                 </div>
                 <EmployeeList 
                     records = {this.state.showData} 
-                    onClick = {this.handleClick}
+                    onDelete = {this.deleteRecord}
                     onEdit = {this.editRecords}
                 />
             </div>
