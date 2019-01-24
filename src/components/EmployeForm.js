@@ -12,7 +12,8 @@ class EmployeForm extends Component {
                 photo:'',
                 showData: [],
                 isEditElement: false,
-                indexForEdit:''
+                indexForEdit:'',
+                submitBtnValue: "Create record"
         }
         this.onSubmitHandle  = this.onSubmitHandle.bind(this);
         this.handleChange = this.handleChange.bind(this);
@@ -32,7 +33,8 @@ class EmployeForm extends Component {
         if(index !== ''){
             this.setState({
                 isEditElement: !this.state.isEditElement,
-                indexForEdit: index
+                indexForEdit: index,
+                submitBtnValue: 'Edit record'
             });
         }
         let arrayItem = dataList[index];
@@ -120,7 +122,7 @@ class EmployeForm extends Component {
                             <input name="photo" type="file" onChange={this.handleChange}/>
                         </div>
                         <div className="form-row">
-                            <button type="submit">Create record</button>
+                            <button type="submit">{this.state.submitBtnValue}</button>
                         </div>
                     </form>
                     
