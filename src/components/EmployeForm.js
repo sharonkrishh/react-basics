@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import EmployeeList from './EmployeeList';
-import { styles } from 'ansi-colors';
+import { joinSafe } from 'upath';
 
 class EmployeForm extends Component {
     constructor(props){
@@ -10,7 +10,7 @@ class EmployeForm extends Component {
                 email:'',
                 phone:'',
                 photo:'',
-                showData: [],
+                showData:JSON.parse(localStorage.getItem('dataItems')),
                 isEditElement: false,
                 indexForEdit:'',
                 submitBtnValue: "Create record"
@@ -23,7 +23,6 @@ class EmployeForm extends Component {
     handleChange = (e) =>{
         e.preventDefault();
         this.setState({[e.target.name] : e.target.value});
-
 
     }
 // Edit handler method
@@ -38,8 +37,6 @@ class EmployeForm extends Component {
             });
         }
         let arrayItem = dataList[index];
-        // console.log(arrayItem);
-
         this.setState({[this.state]: Object.assign(arrayItem)});
         this.setState({
             name:arrayItem.name,
@@ -87,6 +84,7 @@ class EmployeForm extends Component {
                     phone:'',
                     photo:''
                 }));
+                
             }
         }
     }
@@ -99,7 +97,9 @@ class EmployeForm extends Component {
             this.setState({showData: newShowData});
         }
     }
-
+    componentDidUpdate(prevProps,prevState){
+        localStorage.setItem("dataItems",JSON.stringify(this.state.showData));
+    }
     render() {
         return (
             <div className="EmployeeFromPanel">
