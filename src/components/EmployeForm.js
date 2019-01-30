@@ -46,7 +46,7 @@ class EmployeForm extends Component {
         });
 
     }
-// For create and update method
+// For create and update method in thsishi
     onSubmitHandle = (e) =>{
         e.preventDefault();
         let {name, email, phone, photo} = this.state;
