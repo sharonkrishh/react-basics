@@ -10,7 +10,7 @@ class EmployeForm extends Component {
                 email:'',
                 phone:'',
                 photo:'',
-                showData:JSON.parse(localStorage.getItem('dataItems')),
+                showData:(localStorage.getItem('dataItems') !== null)? JSON.parse(localStorage.getItem('dataItems')): [] ,
                 isEditElement: false,
                 indexForEdit:'',
                 submitBtnValue: "Create record"
@@ -97,6 +97,7 @@ class EmployeForm extends Component {
             this.setState({showData: newShowData});
         }
     }
+
     componentDidUpdate(prevProps,prevState){
         localStorage.setItem("dataItems",JSON.stringify(this.state.showData));
     }
@@ -119,7 +120,7 @@ class EmployeForm extends Component {
                         </div>
                         <div className="form-row">
                             <label>Your photo</label>
-                            <input name="photo" type="file" onChange={this.handleChange}/>
+                            <input name="photo" type="file" onChange={this.handleChange} id="fileInput"/>
                         </div>
                         <div className="form-row">
                             <button type="submit">{this.state.submitBtnValue}</button>
