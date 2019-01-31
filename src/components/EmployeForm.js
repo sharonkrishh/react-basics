@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import EmployeeList from './EmployeeList';
 import { joinSafe } from 'upath';
+import { reset } from 'ansi-colors';
 
 class EmployeForm extends Component {
     constructor(props){
@@ -28,11 +29,15 @@ class EmployeForm extends Component {
     }
     fileHandleChange = (e) => {
         e.preventDefault();
+        
         let image = e.target.files[0];
+        let imageUrl = URL.createObjectURL(image);
         this.setState({
-            photo : URL.createObjectURL(image)
+            photo : imageUrl
         });
+        // URL.revokeObjectURL(imageUrl);
         console.log("This is form file input");
+
     }
 // Edit handler method
     editRecords = (index, e) => {
@@ -93,7 +98,6 @@ class EmployeForm extends Component {
                     phone:'',
                     photo:''
                 }));
-                
             }
         }
     }
