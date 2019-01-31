@@ -25,11 +25,19 @@ class EmployeeList extends Component {
         this.props.onEdit(index);
     }
 
+
     render() {
-            let recordList = ["loeRecords"];
-            if(this.state.isVisibleRecords){
-                recordList.push('visible');
-            }
+        const imgStyle = {
+            maxHeight: "40px",
+            maxWidth: "40px",
+            background:"#ffffff",
+            padding:"5px",
+            boxShadow:"0px 1px 4px rgba(0,0,0,0.3)"
+          }
+        let recordList = ["loeRecords"];
+        if(this.state.isVisibleRecords){
+            recordList.push('visible');
+        }
         return (
             <div className="listOfEmployee">
                 <div className="loeHeader">
@@ -54,7 +62,7 @@ class EmployeeList extends Component {
                                         <td>{record.name}</td>
                                         <td>{record.email}</td>
                                         <td>{record.phone}</td>
-                                        <td>{record.photo}</td>
+                                        <td><img alt='' src={record.photo} style={imgStyle}/></td>
                                         <td>
                                             <button onClick={(e) => this.deleteRow(e,index)}>Delete</button>
                                             <button onClick={(e) => this.editRow(e,index)}>Edit</button>

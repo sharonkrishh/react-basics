@@ -18,12 +18,21 @@ class EmployeForm extends Component {
         this.onSubmitHandle  = this.onSubmitHandle.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.deleteRecord = this.deleteRecord.bind(this);
+        this.fileHandleChange = this.fileHandleChange.bind(this);
     }
 // On input change method
     handleChange = (e) =>{
         e.preventDefault();
         this.setState({[e.target.name] : e.target.value});
 
+    }
+    fileHandleChange = (e) => {
+        e.preventDefault();
+        let image = e.target.files[0];
+        this.setState({
+            photo : URL.createObjectURL(image)
+        });
+        console.log("This is form file input");
     }
 // Edit handler method
     editRecords = (index, e) => {
@@ -120,7 +129,7 @@ class EmployeForm extends Component {
                         </div>
                         <div className="form-row">
                             <label>Your photo</label>
-                            <input name="photo" type="file" onChange={this.handleChange} id="fileInput"/>
+                            <input name="photo" type="file" onChange={this.fileHandleChange} id="fileInput"/>
                         </div>
                         <div className="form-row">
                             <button type="submit">{this.state.submitBtnValue}</button>
