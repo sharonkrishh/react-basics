@@ -21,7 +21,7 @@ class EmployeForm extends Component {
         this.deleteRecord = this.deleteRecord.bind(this);
         this.fileHandleChange = this.fileHandleChange.bind(this);
     }
-// On input change method ahdsadfghjkl;
+// On input change method ahdsa:wq:dfghjkl;dsfghjkl;'
     handleChange = (e) =>{
         e.preventDefault();
         this.setState({[e.target.name] : e.target.value});
