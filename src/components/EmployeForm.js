@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import EmployeeList from './EmployeeList';
-import { joinSafe } from 'upath';
-import { reset } from 'ansi-colors';
 
 class EmployeForm extends Component {
     constructor(props){
@@ -21,11 +19,7 @@ class EmployeForm extends Component {
         this.deleteRecord = this.deleteRecord.bind(this);
         this.fileHandleChange = this.fileHandleChange.bind(this);
     }
-<<<<<<< HEAD
-// On input change method 
-=======
 // On input change method
->>>>>>> aa2d282c7293d4fdec028aa8a0091bd028113a2d
     handleChange = (e) =>{
         e.preventDefault();
         this.setState({[e.target.name] : e.target.value});
@@ -34,7 +28,6 @@ class EmployeForm extends Component {
 // On file input change  
     fileHandleChange = (e) => {
         e.preventDefault();
-        
         let image = e.target.files[0];
         let imageUrl = URL.createObjectURL(image);
         this.setState({
@@ -50,7 +43,7 @@ class EmployeForm extends Component {
         let dataList = this.state.showData;
         if(index !== ''){
             this.setState({
-                isEditElement: !this.state.isEditElement,
+                isEditElement: true,
                 indexForEdit: index,
                 submitBtnValue: 'Edit record'
             });
@@ -110,7 +103,7 @@ class EmployeForm extends Component {
     deleteRecord = (index) =>{
         let newShowData = this.state.showData;
         console.log(newShowData);
-        if(index !== -1){
+        if((index !== -1) && (!this.state.isEditElement)){
             newShowData.splice(index, 1);
             this.setState({showData: newShowData});
         }
