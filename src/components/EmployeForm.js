@@ -81,6 +81,7 @@ class EmployeForm extends Component {
             }),
             this.setState({
                 isEditElement: false,
+                submitBtnValue: 'Create record'
             }));
         }else{
             // For creating new record method
